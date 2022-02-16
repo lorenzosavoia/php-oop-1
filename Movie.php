@@ -54,7 +54,11 @@ class Movie
     }
     public function getActor()
     {
-        return $this->actor;
+        if (is_string($this->actor)) {
+            return $this->actor;
+        }else {
+            return var_dump('hai sbagliato');
+        }
     }
     public function setLanguage($language)
     {
@@ -66,6 +70,7 @@ class Movie
     }
 }
 $movies = new Movie('Assassinio sul Nilo', 10, 'IT');
+$movies2 = new Movie('La ricerca della felicità', 3, 'ENG');
 $movies->setActor('Kenneth Branagh');
 ?>
 
@@ -85,6 +90,11 @@ $movies->setActor('Kenneth Branagh');
         <li>prezzo: <?= $movies->getPrice() ?>€</li>
         <li>lingua: <?= $movies->getLanguage() ?></li>
         <li>Nei panni di Hercule Poirot: <?= $movies->getActor() ?></li>
+    </ul>
+    <ul>
+        <li>titolo: <?= $movies2->getTitle() ?></li>
+        <li>prezzo: <?= $movies2->getPrice() ?>€</li>
+        <li>lingua: <?= $movies2->getLanguage() ?></li>
     </ul>
 </body>
 
